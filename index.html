@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convocation Ceremony 2026 — TSFAI × ANUDIP</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:       #0A0E1A;
+  --sapphire:  #1E3A8A;
+  --royal:     #2563EB;
+  --sky:       #38BDF8;
+  --amber:     #F59E0B;
+  --amber2:    #FCD34D;
+  --rose:      #F43F5E;
+  --emerald:   #10B981;
+  --slate:     #94A3B8;
+  --glass:     rgba(255,255,255,0.04);
+  --glass2:    rgba(255,255,255,0.08);
+  --border:    rgba(56,189,248,0.18);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--ink);
+  font-family:'Outfit',sans-serif;
+  color:#E2E8F0;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+#bgCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-size:200px;pointer-events:none;z-index:1;opacity:.4;
+}
+.page{position:relative;z-index:2;max-width:1160px;margin:0 auto;padding:40px 24px 60px;}
+
+/* HERO */
+.hero{text-align:center;padding:56px 0 48px;animation:riseUp .9s cubic-bezier(.16,1,.3,1) both;}
+.org-strip{display:flex;justify-content:center;align-items:center;margin-bottom:40px;}
+.org-pill{display:flex;flex-direction:column;align-items:center;padding:14px 32px;background:var(--glass2);border:1px solid var(--border);backdrop-filter:blur(20px);gap:3px;}
+.org-pill:first-child{border-radius:14px 0 0 14px;}
+.org-pill:last-child{border-radius:0 14px 14px 0;}
+.org-sep{width:1px;height:48px;background:var(--border);}
+.org-micro{font-size:9px;text-transform:uppercase;letter-spacing:3px;color:var(--slate);font-weight:500;}
+.org-name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:var(--sky);}
+.org-name.amber{color:var(--amber2);}
+.badge-center{padding:10px 28px;background:linear-gradient(135deg,var(--sapphire),var(--royal));border:none;}
+.badge-center .org-name{font-size:14px;color:#fff;letter-spacing:4px;}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 20px;border:1px solid var(--amber);border-radius:999px;font-size:10px;text-transform:uppercase;letter-spacing:4px;color:var(--amber2);font-weight:600;margin-bottom:24px;animation:riseUp .9s .1s cubic-bezier(.16,1,.3,1) both;}
+.eyebrow::before,.eyebrow::after{content:'◆';font-size:6px;color:var(--amber);}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(54px,10vw,108px);font-weight:700;line-height:.95;letter-spacing:-1px;margin-bottom:10px;animation:riseUp .9s .15s cubic-bezier(.16,1,.3,1) both;}
+h1 em{font-style:italic;font-weight:300;background:linear-gradient(100deg,var(--sky) 0%,var(--emerald) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;}
+.hero-sub{font-size:13px;letter-spacing:5px;text-transform:uppercase;color:var(--slate);font-weight:400;animation:riseUp .9s .22s cubic-bezier(.16,1,.3,1) both;}
+
+/* KPI */
+.kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;animation:riseUp .9s .3s cubic-bezier(.16,1,.3,1) both;}
+.kpi{background:var(--glass);border:1px solid var(--border);border-radius:20px;padding:26px 20px;text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(16px);transition:transform .25s,box-shadow .25s;}
+.kpi::before{content:'';position:absolute;inset:0;border-radius:20px;background:linear-gradient(135deg,rgba(56,189,248,.06),transparent);pointer-events:none;}
+.kpi:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(37,99,235,.2),0 0 0 1px rgba(56,189,248,.3);}
+.kpi-shine{position:absolute;top:0;left:0;right:0;height:2px;border-radius:20px 20px 0 0;}
+.kpi-shine.blue{background:linear-gradient(90deg,var(--royal),var(--sky));}
+.kpi-shine.gold{background:linear-gradient(90deg,var(--amber),var(--amber2));}
+.kpi-shine.green{background:linear-gradient(90deg,var(--emerald),#6EE7B7);}
+.kpi-icon{font-size:30px;margin-bottom:10px;display:block;}
+.kpi-label{font-size:9px;text-transform:uppercase;letter-spacing:3px;color:var(--slate);margin-bottom:8px;font-weight:600;}
+.kpi-value{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,38px);font-weight:700;line-height:1;color:#fff;}
+.kpi-value.sky{color:var(--sky);}.kpi-value.gold{color:var(--amber2);}.kpi-value.green{color:#6EE7B7;}
+.kpi-sub{font-size:11px;color:var(--slate);margin-top:6px;}
+
+/* COUNTDOWN */
+.countdown-wrap{background:linear-gradient(135deg,rgba(30,58,138,.4),rgba(37,99,235,.15));border:1px solid rgba(37,99,235,.35);border-radius:24px;padding:36px 24px;text-align:center;margin-bottom:28px;position:relative;overflow:hidden;animation:riseUp .9s .38s cubic-bezier(.16,1,.3,1) both;}
+.countdown-wrap::before{content:'CEREMONY';position:absolute;font-family:'Bebas Neue',sans-serif;font-size:120px;letter-spacing:20px;color:rgba(255,255,255,.025);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;}
+.cd-tag{font-size:10px;text-transform:uppercase;letter-spacing:5px;color:var(--sky);font-weight:600;margin-bottom:24px;}
+.cd-grid{display:flex;justify-content:center;align-items:flex-start;gap:8px;flex-wrap:wrap;}
+.cd-box{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(56,189,248,.2);border-radius:16px;padding:20px 24px 16px;min-width:90px;}
+.cd-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,9vw,80px);line-height:1;background:linear-gradient(180deg,#fff 30%,var(--sky) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:2px;}
+.cd-unit-lbl{font-size:9px;text-transform:uppercase;letter-spacing:3px;color:var(--slate);margin-top:6px;font-weight:600;}
+.cd-colon{font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(56,189,248,.4);line-height:1;padding-top:16px;}
+
+/* SECTION */
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;margin-top:32px;}
+.sec-head-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
+.sec-head-text{font-size:9px;text-transform:uppercase;letter-spacing:5px;color:var(--sky);font-weight:700;white-space:nowrap;}
+
+/* TEAM */
+.team-section{animation:riseUp .9s .46s cubic-bezier(.16,1,.3,1) both;}
+.team-category{margin-bottom:20px;}
+.cat-label{font-size:9px;text-transform:uppercase;letter-spacing:4px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.cat-label.blue{color:var(--sky);}.cat-label.gold{color:var(--amber2);}.cat-label.rose{color:#FDA4AF;}
+.cat-label span{flex:1;height:1px;background:currentColor;opacity:.2;}
+.team-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.t-card{background:var(--glass);border:1px solid var(--border);border-radius:18px;padding:18px 20px;display:flex;align-items:center;gap:16px;backdrop-filter:blur(12px);transition:transform .2s,border-color .2s,box-shadow .2s;position:relative;overflow:hidden;}
+.t-card:hover{transform:translateX(6px);border-color:var(--sky);box-shadow:-6px 0 24px rgba(56,189,248,.15);}
+.t-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:18px 0 0 18px;}
+.t-card.blue::after{background:linear-gradient(180deg,var(--royal),var(--sky));}
+.t-card.gold::after{background:linear-gradient(180deg,var(--amber),var(--amber2));}
+.t-card.rose::after{background:linear-gradient(180deg,var(--rose),#FDA4AF);}
+.t-avatar{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:#fff;flex-shrink:0;}
+.t-avatar.blue{background:linear-gradient(135deg,var(--sapphire),var(--royal));box-shadow:0 8px 24px rgba(37,99,235,.4);}
+.t-avatar.gold{background:linear-gradient(135deg,#92400E,var(--amber));box-shadow:0 8px 24px rgba(245,158,11,.35);}
+.t-avatar.rose{background:linear-gradient(135deg,#9F1239,var(--rose));box-shadow:0 8px 24px rgba(244,63,94,.35);}
+.t-role{font-size:9px;text-transform:uppercase;letter-spacing:3px;font-weight:700;margin-bottom:5px;}
+.t-role.blue{color:var(--sky);}.t-role.gold{color:var(--amber2);}.t-role.rose{color:#FDA4AF;}
+.t-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#F1F5F9;line-height:1.2;}
+
+/* NOTICE */
+.notice{background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(251,191,36,.06));border:1px solid rgba(245,158,11,.45);border-radius:20px;padding:28px 32px;display:flex;align-items:flex-start;gap:22px;margin-top:28px;animation:riseUp .9s .54s cubic-bezier(.16,1,.3,1) both;position:relative;overflow:hidden;}
+.notice::before{content:'!';position:absolute;right:24px;top:50%;transform:translateY(-50%);font-family:'Bebas Neue',sans-serif;font-size:120px;color:rgba(245,158,11,.05);line-height:1;}
+.notice-icon{font-size:38px;flex-shrink:0;animation:bobble 2.5s ease infinite;}
+.notice-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:var(--amber2);margin-bottom:8px;}
+.notice-body{font-size:14px;color:#CBD5E1;line-height:1.7;}
+.notice-body strong{color:#fff;font-weight:600;}
+
+/* FOOTER */
+.footer{margin-top:48px;padding-top:28px;border-top:1px solid var(--border);display:flex;flex-direction:column;align-items:center;gap:14px;animation:riseUp .9s .6s cubic-bezier(.16,1,.3,1) both;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:6px;background:linear-gradient(90deg,var(--sky),var(--emerald));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.footer-url{font-size:13px;color:var(--slate);letter-spacing:2px;}
+.socials{display:flex;gap:10px;}
+.s-btn{width:36px;height:36px;border-radius:10px;background:var(--glass2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--slate);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;}
+.s-btn:hover{background:var(--royal);border-color:var(--sky);color:#fff;transform:translateY(-3px);}
+
+@keyframes riseUp{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);}}
+@keyframes bobble{0%,100%{transform:rotate(-8deg) scale(1);}50%{transform:rotate(8deg) scale(1.1);}}
+
+@media(max-width:680px){
+  .kpi-row{grid-template-columns:1fr;}
+  .team-row{grid-template-columns:1fr;}
+  .org-strip{flex-wrap:wrap;justify-content:center;}
+  .org-pill{border-radius:10px !important;}
+  h1{font-size:54px;}
+}
+</style>
+</head>
+<body>
+<canvas id="bgCanvas"></canvas>
+<div class="page">
+
+  <div class="hero">
+    <div class="org-strip">
+      <div class="org-pill">
+        <span class="org-micro">Supported by</span>
+        <span class="org-name amber">FAI</span>
+      </div>
+      <div class="org-sep"></div>
+      <div class="org-pill badge-center">
+        <span class="org-micro">Project</span>
+        <span class="org-name">TSFAI</span>
+      </div>
+      <div class="org-sep"></div>
+      <div class="org-pill">
+        <span class="org-micro">Implemented by</span>
+        <span class="org-name">ANUDIP</span>
+      </div>
+    </div>
+    <div class="eyebrow">Official Invitation</div>
+    <h1>Welcome to the<br><em>Convocation</em></h1>
+    <p class="hero-sub">Ceremony &nbsp;•&nbsp; 2026 &nbsp;•&nbsp; Hyderabad</p>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="kpi-shine blue"></div>
+      <span class="kpi-icon">📅</span>
+      <div class="kpi-label">Date</div>
+      <div class="kpi-value sky">27 March</div>
+      <div class="kpi-sub">Friday, 2026</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-shine gold"></div>
+      <span class="kpi-icon">⏰</span>
+      <div class="kpi-label">Reporting Time</div>
+      <div class="kpi-value gold">10:00 AM</div>
+      <div class="kpi-sub">Be there sharp — no delays</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-shine green"></div>
+      <span class="kpi-icon">📍</span>
+      <div class="kpi-label">Venue</div>
+      <div class="kpi-value green" style="font-size:22px;">Vanasthalipuram</div>
+      <div class="kpi-sub">Hyderabad, Telangana</div>
+    </div>
+  </div>
+
+  <div class="countdown-wrap">
+    <div class="cd-tag">⚡ &nbsp; Live Countdown to Ceremony</div>
+    <div class="cd-grid">
+      <div class="cd-box"><div class="cd-num" id="cd-d">--</div><div class="cd-unit-lbl">Days</div></div>
+      <div class="cd-colon">:</div>
+      <div class="cd-box"><div class="cd-num" id="cd-h">--</div><div class="cd-unit-lbl">Hours</div></div>
+      <div class="cd-colon">:</div>
+      <div class="cd-box"><div class="cd-num" id="cd-m">--</div><div class="cd-unit-lbl">Minutes</div></div>
+      <div class="cd-colon">:</div>
+      <div class="cd-box"><div class="cd-num" id="cd-s">--</div><div class="cd-unit-lbl">Seconds</div></div>
+    </div>
+  </div>
+
+  <div class="team-section">
+    <div class="sec-head">
+      <div class="sec-head-text">Your Ceremony Team</div>
+      <div class="sec-head-line"></div>
+    </div>
+
+    <div class="team-category">
+      <div class="cat-label blue">🎯 &nbsp; Domain Trainers <span></span></div>
+      <div class="team-row">
+        <div class="t-card blue">
+          <div class="t-avatar blue">MR</div>
+          <div><div class="t-role blue">Domain Trainer</div><div class="t-name">M. Rakesh</div></div>
+        </div>
+        <div class="t-card blue">
+          <div class="t-avatar blue">KV</div>
+          <div><div class="t-role blue">Domain Trainer</div><div class="t-name">K. Varalakshmi</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-category">
+      <div class="cat-label gold">✨ &nbsp; Soft Skill Trainers <span></span></div>
+      <div class="team-row">
+        <div class="t-card gold">
+          <div class="t-avatar gold">PV</div>
+          <div><div class="t-role gold">Soft Skill Trainer</div><div class="t-name">P. Varalakshmi</div></div>
+        </div>
+        <div class="t-card gold">
+          <div class="t-avatar gold">HP</div>
+          <div><div class="t-role gold">Soft Skill Trainer</div><div class="t-name">Hari Prasad</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-category">
+      <div class="cat-label rose">🏛 &nbsp; Center Managers <span></span></div>
+      <div class="team-row">
+        <div class="t-card rose">
+          <div class="t-avatar rose">BV</div>
+          <div><div class="t-role rose">Center Manager</div><div class="t-name">B. Venkatesh</div></div>
+        </div>
+        <div class="t-card rose">
+          <div class="t-avatar rose">SW</div>
+          <div><div class="t-role rose">Center Manager</div><div class="t-name">Swathi</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice">
+    <div class="notice-icon">🎓</div>
+    <div>
+      <div class="notice-title">⚠ Attendance is Mandatory</div>
+      <div class="notice-body">
+        Dear Students, your presence at the <strong>Convocation Ceremony</strong> is <strong>compulsory</strong>. This is a proud milestone celebrating your transformation and hard work. Please arrive by <strong>10:00 AM sharp</strong> at Vanasthalipuram, Hyderabad on <strong>27th March 2026</strong>. Kindly attend without fail.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo">ANUDIP</div>
+    <div class="footer-url">🌐 &nbsp; www.anudip.org &nbsp;|&nbsp; Life. Transformed.</div>
+    <div class="socials">
+      <div class="s-btn">f</div>
+      <div class="s-btn">𝕏</div>
+      <div class="s-btn">in</div>
+      <div class="s-btn">▶</div>
+      <div class="s-btn">📸</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+function initP(){particles=[];for(let i=0;i<70;i++)particles.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.3,dx:(Math.random()-.5)*.35,dy:(Math.random()-.5)*.35,alpha:Math.random()*.5+.1,hue:Math.random()>.5?210:38});}
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  let g1=ctx.createRadialGradient(W*.15,H*.2,0,W*.15,H*.2,W*.5);g1.addColorStop(0,'rgba(30,58,138,.18)');g1.addColorStop(1,'transparent');ctx.fillStyle=g1;ctx.fillRect(0,0,W,H);
+  let g2=ctx.createRadialGradient(W*.85,H*.75,0,W*.85,H*.75,W*.45);g2.addColorStop(0,'rgba(16,185,129,.1)');g2.addColorStop(1,'transparent');ctx.fillStyle=g2;ctx.fillRect(0,0,W,H);
+  particles.forEach(p=>{
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`hsla(${p.hue},80%,65%,${p.alpha})`;ctx.fill();
+    p.x+=p.dx;p.y+=p.dy;
+    if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+  });
+  for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){
+    const d=Math.hypot(particles[i].x-particles[j].x,particles[i].y-particles[j].y);
+    if(d<100){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(56,189,248,${.06*(1-d/100)})`;ctx.lineWidth=.6;ctx.stroke();}
+  }
+  requestAnimationFrame(draw);
+}
+resize();initP();draw();
+window.addEventListener('resize',()=>{resize();initP();});
+
+function pad(n){return String(n).padStart(2,'0');}
+function tick(){
+  const diff=new Date('2026-03-27T10:00:00')-new Date();
+  if(diff<=0){['cd-d','cd-h','cd-m','cd-s'].forEach(id=>document.getElementById(id).textContent='00');return;}
+  document.getElementById('cd-d').textContent=pad(Math.floor(diff/864e5));
+  document.getElementById('cd-h').textContent=pad(Math.floor((diff%864e5)/36e5));
+  document.getElementById('cd-m').textContent=pad(Math.floor((diff%36e5)/6e4));
+  document.getElementById('cd-s').textContent=pad(Math.floor((diff%6e4)/1e3));
+}
+tick();setInterval(tick,1000);
+</script>
+</body>
+</html>
